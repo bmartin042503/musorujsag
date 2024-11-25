@@ -1,0 +1,19 @@
+{
+  "name": "musorujsag",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node --env-file=.env src/app/server.js",
+    "dev": "nodemon --env-file=.env src/app/server.js"
+  },
+  "author": "Bartos Martin",
+  "license": "ISC",
+  "description": "Adatbázisok gyakorlathoz tartozó műsorújság projektmunka - Neptun kód: AWPA20",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
