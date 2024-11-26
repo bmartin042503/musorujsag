@@ -2,6 +2,8 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const db_server = require('./config/db');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 7500;
 
@@ -19,10 +21,12 @@ app.get('/', (req, res) => {
     res.send('Műsorújság projekt');
 });
 
-
 /* Szerver */
 server.listen(PORT, () => {
     console.log(`A szerver elindult! Port: ${PORT}`);
 });
+
+
+
 
 
