@@ -1,8 +1,7 @@
 CREATE TABLE Csatorna (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nev VARCHAR(100) NOT NULL,
-    leiras TEXT,
-    kategoria VARCHAR(50)
+    leiras TEXT
 );
 
 CREATE TABLE Musor (
@@ -44,3 +43,16 @@ CREATE TABLE Admin (
     jelszo VARCHAR(255) NOT NULL,
     utolso_belepes DATETIME
 );
+
+CREATE TABLE Kategoria (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    megnevezes VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE CsatornaKategoria (
+    csatorna_id INT,
+    kategoria_id INT,
+    PRIMARY KEY (csatorna_id, kategoria_id),
+    FOREIGN KEY (csatorna_id) REFERENCES Csatorna(id),
+    FOREIGN KEY (kategoria_id) REFERENCES Kategoria(id)
+)

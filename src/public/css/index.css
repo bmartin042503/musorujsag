@@ -1,0 +1,28 @@
+#project-title, #project-subtitle {
+    display: block;
+    text-align: center;
+}
+
+#project-title {
+    margin-top: 2rem;
+    font-size: 3rem;
+}
+
+#project-subtitle {
+    font-size: 1.5rem;
+}
+
+#admin-login {
+    color: var(--md-sys-color-on-surface);
+    padding: 0.5rem 1.25rem;
+    font-size: 1.25rem;
+    border-radius: 2rem;
+    text-align: center;
+    transition: 0.3s
+}
+
+#admin-login:hover {
+    color: var(--md-sys-color-on-primary-container);
+    background-color: var(--md-sys-color-primary-container);
+    cursor: pointer;
+}
