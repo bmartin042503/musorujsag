@@ -16,5 +16,48 @@
     <button id="theme-toggle" onclick="toggleTheme()">
         <img id="theme-icon" src="images/light_mode.svg" alt="Témaváltó gomb">
     </button>
+    <div class="program-guide-container">
+        <% if(channels && channels.length > 0) { %>
+            <div class="guide-title">
+                <input id="guide-date" type="date" placeholder="Dátum kiválasztása" required>
+                <label for="guide-date">napon aktuális műsorlista</label>
+            </div>
+            <div class="guide-wrapper">
+                <div class="channel-pagination">
+                    <button id="back-btn" onclick="">
+                        <img id="arrow-icon" src="images/arrow_back.svg" alt="Előző csatornák listázása">
+                    </button>
+                    <span id="available-channels">Elérhető csatornák összesen: <%= availableChannelsCount %></span>
+                    <button id="forward-btn" onclick="">
+                        <img id="arrow-icon" src="images/arrow_forward.svg" alt="Következő csatornák listázása">
+                    </button>
+                </div>
+                <div class="guide-content">
+                    <% channels.forEach(channel => { %>
+                        <div class="channel-guide" id="channel-guide-<%= channel.id %>">
+                            <div class="channel-details">
+                                <span id="channel-name"><%= channel.name %> - <%= channel.category %></span>
+                                <span id="channel-description"><%= channel.description %></span>
+                            </div>
+                            <div class="shows-container">
+                                <% channel.shows.forEach(show => { %>
+                                    <div class="show-details <%= show.aired_at === 'Most' ? 'airs' : '' %>">
+                                        <span id="show-air-time"><%= show.aired_at === 'Most' ? '10:00-12:00' : show.aired_at %></span>
+                                        <div class="show-description">
+                                            <span id="show-name"><%= show.name %></span>
+                                            <span id="show-episode">(<%= show.episode %>)</span>
+                                            <span id="show-actors">Szereplők: <%= show.actor %></span>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+                    <% })%>
+                </div>
+            </div>
+        <% } else { %>
+            <span id="no-channels">Nem találhatóak csatornák.</span>
+        <% } %>
+    </div>
 </body>
 </html>

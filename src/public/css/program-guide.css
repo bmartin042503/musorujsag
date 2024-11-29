@@ -9,6 +9,7 @@
     text-align: left;
     display: block;
     margin-left: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 #theme-toggle {
@@ -16,4 +17,156 @@
     top: 1.5rem;
     right: 1.5rem;
     z-index: 1000;
+}
+
+.program-guide-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-height: 70vh;
+}
+
+.guide-title {
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+#guide-date {
+    margin-right: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.guide-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    align-items: start;
+    gap: 2rem;
+
+}
+
+.guide-wrapper {
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+#channel-name {
+    font-size: 1.25rem;
+}
+
+.shows-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    width: 100%;
+    max-height: calc(70vh - 10rem);
+    overflow-y: auto;
+    scroll-padding-top: 3rem;
+}
+
+.show-details {
+    background-color: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 100%;
+}
+
+#show-air-time {
+    margin-right: 1rem;
+}
+
+#show-episode {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+}
+
+#show-actors {
+    font-size: 0.75rem;
+}
+
+.show-description {
+    display: flex;
+    flex-direction: column;
+}
+
+#no-channels {
+    color: var(--md-sys-color-error);
+    font-size: 2rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.channel-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    margin-left: 0.5rem;
+    height: 5rem;
+}
+
+#channel-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+#available-channels {
+    color: var(--md-sys-color-on-secondary-container);
+    font-size: 1.5rem;
+}
+
+.airs {
+    background-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+}
+
+/* megfordított filterek, mert az arrow icon benne van egy másik színben */
+#arrow-icon {
+    height: 2rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+body.light #arrow-icon {
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+#back-btn, #forward-btn {
+    border: none;
+    border-radius: 2rem;
+    padding: 0.25rem;
+    background-color: var(--md-sys-color-secondary);
+    transition: 0.3s ease;
+}
+
+#back-btn:hover, #forward-btn:hover {
+    cursor: pointer;
+    background-color: var(--md-sys-color-primary);
+}
+
+.channel-pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2.5rem;
 }

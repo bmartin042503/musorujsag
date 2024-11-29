@@ -68,3 +68,7 @@ body.light #theme-icon {
     color: var(--md-sys-color-on-primary-container);
     background-color: var(--md-sys-color-primary-container);
 }
+
+input {
+    font-family: 'Arial', 'sans-serif';
+}
