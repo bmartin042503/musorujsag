@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/theme/light.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/auth.css">
-    <title>Admin bejelentkezés</title>
+    <title>Admin regisztráció</title>
 </head>
 <body>
     <script src="js/theme.js"></script>
@@ -15,8 +15,10 @@
         <form id="auth-form">
             <input type="text" placeholder="Név" name="username" required>
             <input type="password" placeholder="Jelszó" name="password" required>
-            <button id="auth-btn" type="submit" class="clickable bg">Belépés</button>
-            <span id="admin-auth" class="clickable" onclick="redirectToRegistration()">Regisztráció</span>
+            <input type="password" placeholder="Jelszó megerősítése" name="password-confirm" required>
+            <input type="email" placeholder="E-mail cím" name="email" required>
+            <button id="auth-btn" type="submit" class="clickable bg">Regisztráció</button>
+            <span id="admin-auth" class="clickable" onclick="redirectToLogin()">Már van fiókom</span>
         </form>
         <span id="return-home" class="clickable" onclick="redirectToHome()">Vissza a főoldalra</span>
         <button id="theme-toggle" onclick="toggleTheme()">

@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const db_server = require('./config/db');
+const programRoutes = require('./routes/ProgramRoutes');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 7500;
@@ -25,6 +26,12 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 });
+
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+app.use(programRoutes);
 
 /* Szerver */
 server.listen(PORT, () => {
