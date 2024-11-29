@@ -3,11 +3,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/theme/dark.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/theme/light.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Műsorújság</title>
 </head>
 <body class="dark">
+    <script src="js/theme.js"></script>
     <script>
         function redirectToLogin() {
             window.location.href = "/login";
@@ -24,6 +26,9 @@
     </div>
     <div class="bottom-section">
         <span id="admin-login" onclick="redirectToLogin()">Admin belépés</span>
+        <button id="theme-toggle" onclick="toggleTheme()">
+            <img id="theme-icon" src="images/light_mode.svg" alt="Témaváltó gomb">
+        </button>
     </div>
 </body>
 </html>

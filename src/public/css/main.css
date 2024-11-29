@@ -12,9 +12,32 @@
 
 body {
     background-color: var(--md-sys-color-surface);
+    transition: background-color 0.5s ease;
 }
 
 a {
     text-decoration: none;
     color: var(--md-sys-color-on-surface);
+}
+
+#theme-toggle {
+    border: none;
+    border-radius: 3rem;
+    padding: 0.75rem;
+    background-color: var(--md-sys-color-secondary);
+    transition: background-color 1s ease;
+}
+
+#theme-toggle:hover {
+    cursor: pointer;
+}
+
+#theme-icon {
+    height: 2rem;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: filter 0.4s ease;
+}
+
+body.light #theme-icon {
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }

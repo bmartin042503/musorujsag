@@ -3,14 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/theme/dark.css">
+    <link rel="stylesheet" type="text/css" href="css/theme/light.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Admin bejelentkezés</title>
 </head>
 <body class="dark">
+    <script src="js/theme.js"></script>
     <form id="login-form">
         <input type="text" placeholder="Név">
         <input type="password" placeholder="Jelszó">
         <button type="submit">Belépés</button>
     </form>
+    <button id="theme-toggle" onclick="toggleTheme()">
+        <img id="theme-icon" src="images/light_mode.svg" alt="Témaváltó gomb">
+    </button>
 </body>
 </html>
