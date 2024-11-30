@@ -29,6 +29,31 @@
         <div class="channel-panel panel-section">
             <span id="panel-title">Összes csatorna (<%= channels.length %>)</span>
             <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_CHANNEL)">Új csatorna létrehozása</span>
+            <div class="panel-content">
+                <% channels.forEach(channel => { %>
+                    <div class="channel-item <%= channel.id %>">
+                        <div class="channel-details">
+                            <span id="channel-name"><%= channel.name %></span>
+                            <span id="channel-description"><%= channel.description.length > 0 ? channel.description : '(Nincs leírás)' %></span>
+                            <span id="channel-categories"><%= channel.categories.length > 0 ? 'Kategóriák:' : '(Nincsenek kategóriák)' %></span>
+                            <% if(channel.categories.length > 0) { %>
+                                <% channel.categories.forEach(category => {%>
+                                    <span id="channel-category"><%= category.name %></span>
+                                <% }) %>
+                            <% } %>
+                            <span id="channel-show-count">Hozzárendelt műsorok: <%= channel.shows.length > 0 ? channel.shows.length : 0 %></span>
+                        </div>
+                        <div class="channel-interactions">
+                            <button id="edit-channel" onclick="">
+                                <img id="edit-icon" src="images/edit.svg" alt="Csatorna szerkesztése">
+                            </button>
+                            <button id="delete-channel" onclick="">
+                                <img id="delete-icon" src="images/delete.svg" alt="Csatorna törlése">
+                            </button>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
         </div>
         <div class="show-panel panel-section">
             <span id="panel-title">Összes műsor (<%= shows.length %>)</span>

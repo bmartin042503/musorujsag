@@ -4,7 +4,7 @@ class Channel {
         name,
         description,
         categories, // Category példányok
-        shows, // Show példányok
+        shows // Show példányok
     ) {
         this._id = id;
         this._name = name;

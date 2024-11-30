@@ -1,7 +1,9 @@
 const db_server = require('../config/db');
 const Admin = require('../model/Admin');
+const Channel = require('../model/Channel');
 const Show = require('../model/Show');
 const Actor = require('../model/Actor');
+const Category = require('../model/Category');
 
 class ChannelDAO {
     static async createChannel(name, description) {
@@ -82,6 +84,7 @@ class ChannelDAO {
                     c.id AS channel_id,
                     c.nev AS channel_name,
                     c.leiras AS channel_description,
+                    k.id AS category_id,
                     k.megnevezes AS category_name,
                     m.id AS show_id,
                     m.cim AS show_title,
@@ -105,42 +108,52 @@ class ChannelDAO {
             const channelsMap = new Map();
             rows.forEach(row => {
                 if (!channelsMap.has(row.channel_id)) {
-                    channelsMap.set(row.channel_id, {
-                        id: row.channel_id,
-                        name: row.channel_name,
-                        description: row.channel_description,
-                        categories: [row.category_name],
-                        shows: []
-                    });
+                    const channel = new Channel(
+                        row.channel_id,
+                        row.channel_name,
+                        row.channel_description,
+                        [],
+                        []
+                    );
+                    channelsMap.set(row.channel_id, channel);
                 }
                 const channel = channelsMap.get(row.channel_id);
-                if (!channel.categories.includes(row.category_name)) {
-                    channel.categories.push(row.category_name);
-                }
-                let show = channel.shows.find(show => show.id === row.show_id);
-                if (!show) {
-                    show = new Show(
-                        row.show_id,
-                        row.show_title,
-                        row.show_episode,
-                        row.show_description,
-                        row.air_begins_time,
-                        row.air_ends_time
-                    );
-                    channel.shows.push(show);
-                }
-                if (row.actor_id) {
-                    const actor = new Actor(
-                        row.actor_id,
-                        row.actor_name,
-                        row.actor_profession,
-                        row.actor_nationality,
-                        row.actor_birthdate
-                    );
-                    if (!show.actors) {
-                        show.actors = [];
+                if(row.category_id) {
+                    let category = channel.categories.find(category => category.id === row.category_id);
+                    if(!category) {
+                        category = new Category(
+                            row.category_id,
+                            row.category_name
+                        )
+                        channel.categories.push(category);
                     }
-                    show.actors.push(actor);
+                }
+                if(row.show_id) {
+                    let show = channel.shows.find(show => show.id === row.show_id);
+                    if (!show) {
+                        show = new Show(
+                            row.show_id,
+                            row.show_title,
+                            row.show_episode,
+                            row.show_description,
+                            row.air_begins_time,
+                            row.air_ends_time
+                        );
+                        channel.shows.push(show);
+                    }
+                    if (row.actor_id) {
+                        const actor = new Actor(
+                            row.actor_id,
+                            row.actor_name,
+                            row.actor_profession,
+                            row.actor_nationality,
+                            row.actor_birthdate
+                        );
+                        if (!show.actors) {
+                            show.actors = [];
+                        }
+                        show.actors.push(actor);
+                    }
                 }
             });
             return Array.from(channelsMap.values());

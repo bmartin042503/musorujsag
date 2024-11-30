@@ -20,9 +20,15 @@
 }
 
 .panel-section {
-    margin-top: 1.75rem;
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    flex: 1;
+}
+
+.panel-content {
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 #panel-title {
@@ -36,11 +42,70 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-top: 1.5rem;
+    gap: 2rem;
+    max-height: 100%;
 }
 
 #no-categories, #error-label {
     color: var(--md-sys-color-error);
+}
+
+.channel-item {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.channel-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.channel-interactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.channel-interactions button {
+    background: none;
+    border: none;
+}
+
+.channel-interactions button:hover {
+    cursor: pointer;
+}
+
+#channel-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+#channel-description {
+    margin-bottom: 0.75rem;
+}
+
+#channel-show-count {
+    margin-top: 0.75rem;
+}
+
+#edit-icon, #delete-icon {
+    height: 2rem;
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    transition: 0.4s ease;
+}
+
+body.light #edit-icon, body.light #delete-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
