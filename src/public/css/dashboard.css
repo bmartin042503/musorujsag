@@ -1,0 +1,20 @@
+#dashboard-title {
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    display: block;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+}
+
+#return-home, #logout {
+    margin-left: 1rem;
+    display: block;
+    text-align: start;
+    margin-bottom: 0.5rem;
+}

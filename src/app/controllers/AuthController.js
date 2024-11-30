@@ -43,13 +43,15 @@ const login = async(req, res) => {
 
 const logout = async(req, res) => {
     try {
+        if(!req.session.isLoggedIn) {
+            return res.status(400).json({ message: "Már kijelentkeztél!" })
+        }
         req.session.destroy((error) => {
             if(error) {
                 console.log(`Hiba a session törlése során: ${error}`);
-            } else {
-                res.redirect('/login');
             }
         });
+        res.status(200).json({ message: "Sikeres kijelentkezés!" })
     } catch(error) {
         res.status(500).json({ message: `Hiba történt a kijelentkezés során: ${error}` });
     }

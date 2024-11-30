@@ -6,6 +6,7 @@ const path = require('path');
 const db_server = require('./config/db');
 const programRoutes = require('./routes/ProgramRoutes');
 const authRoutes = require('./routes/AuthRoutes');
+const dashboardRoutes = require('./routes/DashboardRoutes');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 7500;
@@ -47,16 +48,9 @@ app.get('/register', (req, res) => {
     }
 });
 
-app.get('/dashboard', (req, res) => {
-    if(req.session.isLoggedIn) {
-        res.render('dashboard');
-    } else {
-        res.redirect('/login');
-    }
-});
-
 app.use(programRoutes);
 app.use('/api', authRoutes)
+app.use(dashboardRoutes);
 
 /* Szerver */
 server.listen(PORT, () => {

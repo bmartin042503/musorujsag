@@ -5,17 +5,25 @@
     <link rel="stylesheet" type="text/css" href="css/theme/dark.css">
     <link rel="stylesheet" type="text/css" href="css/theme/light.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Admin kezelőpanel</title>
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <title>Admin Kezelőpanel</title>
 </head>
 <body>
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
-    <div class="main-section">
-        <span style="color: var(--md-sys-color-on-surface)">Admin kezelőpanel</span>
+    <script src="js/dashboard.js"></script>
+    <div class="top-section">
+        <span id="dashboard-title" style="color: var(--md-sys-color-on-surface)">Admin Kezelőpanel</span>
+        <span id="logout" class="clickable" onclick="logout()">Kijelentkezés</span>
+        <span id="return-home" class="clickable" onclick="redirectToHome()">Vissza a főoldalra</span>
         <button id="theme-toggle" onclick="toggleTheme()">
             <img id="theme-icon" src="images/light_mode.svg" alt="Témaváltó gomb">
         </button>
+    </div>
+    <div class="panel-container">
+        <div class="channel-panel">
+            <span id="panel-title">Összes csatorna</span>
+        </div>
     </div>
 </body>
 </html>
