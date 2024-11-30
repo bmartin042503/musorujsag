@@ -1,13 +1,13 @@
 const db_server = require('../config/db');
 
 class ChannelDAO {
-    static async createChannel(name, description, category) {
+    static async createChannel(name, description) {
         let conn;
         try {
             conn = await db_server.getConnection();
             const result = await conn.query(
-                'INSERT INTO Csatorna (nev, leiras, kategoria) VALUES (?, ?, ?)',
-                [name, description, category]
+                'INSERT INTO Csatorna (nev, leiras) VALUES (?, ?)',
+                [name, description]
             );
             return result.insertId;
         } catch(error) {

@@ -29,7 +29,7 @@ app.use(session({
 
 /* Alap végpontok kezelése */
 app.get('/', (req, res) => {
-    res.render('index', { loggedIn: req.session.isLoggedIn });
+    res.render('index', { loggedIn: req.session.isLoggedIn, loggedInAs: req.session.name });
 });
 
 app.get('/login', (req, res) => {

@@ -13,6 +13,10 @@
     <script src="js/redirections.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/dashboard.js"></script>
+    <div id="dashboard-modal" class="modal">
+        <div class="modal-content" id="modal-content">
+        </div>
+    </div>
     <div class="top-section">
         <span id="dashboard-title" style="color: var(--md-sys-color-on-surface)">Admin Kezelőpanel</span>
         <span id="logout" class="clickable" onclick="logout()">Kijelentkezés</span>
@@ -24,19 +28,19 @@
     <div class="panel-container">
         <div class="channel-panel panel-section">
             <span id="panel-title">Összes csatorna (<%= channels.length %>)</span>
-            <span class="clickable bg">Új csatorna létrehozása</span>
+            <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_CHANNEL)">Új csatorna létrehozása</span>
         </div>
         <div class="show-panel panel-section">
             <span id="panel-title">Összes műsor (<%= shows.length %>)</span>
-            <span class="clickable bg">Új műsor létrehozása</span>
+            <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_SHOW)">Új műsor létrehozása</span>
         </div>
         <div class="actor-panel panel-section">
             <span id="panel-title">Összes szereplő (<%= actors.length %>)</span>
-            <span class="clickable bg">Új szereplő létrehozása</span>
+            <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_ACTOR)">Új szereplő létrehozása</span>
         </div>
         <div class="category-panel panel-section">
             <span id="panel-title">Összes kategória (<%= categories.length %>)</span>
-            <span class="clickable bg">Új kategória létrehozása</span>
+            <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_CATEGORY)">Új kategória létrehozása</span>
         </div>
     </div>
 </body>

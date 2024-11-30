@@ -12,6 +12,9 @@
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
     <script src="js/logout.js"></script>
+    <% if(loggedIn) { %>
+        <span id="logged-in-as" style="color: var(--md-sys-color-on-surface)">Bejelentkezve mint <%= loggedInAs %></span>
+    <% } %>
     <div class="main-section">
         <div class="title-container">
             <span id="project-title" style="color: var(--md-sys-color-on-surface)">Adatbázisok gyakorlat - Műsorújság projekt</span>
