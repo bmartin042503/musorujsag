@@ -11,12 +11,15 @@
 <body>
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/auth.js"></script>
     <div class="main-section">
         <form id="auth-form">
-            <input type="text" placeholder="Név" name="username" required>
-            <input type="password" placeholder="Jelszó" name="password" required>
-            <input type="password" placeholder="Jelszó megerősítése" name="password-confirm" required>
-            <input type="email" placeholder="E-mail cím" name="email" required>
+            <span id="error_label"></span>
+            <input id="reg-name" type="text" placeholder="Név" name="username" required>
+            <input id="reg-pass" type="password" placeholder="Jelszó" name="password" required>
+            <input id="reg-pass-confirm" type="password" placeholder="Jelszó megerősítése" name="password-confirm" required>
+            <input id="reg-email" type="email" placeholder="E-mail cím" name="email" required>
             <button id="auth-btn" type="submit" class="clickable bg">Regisztráció</button>
             <span id="admin-auth" class="clickable" onclick="redirectToLogin()">Már van fiókom</span>
         </form>

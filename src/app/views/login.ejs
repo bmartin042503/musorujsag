@@ -11,10 +11,13 @@
 <body>
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/auth.js"></script>
     <div class="main-section">
         <form id="auth-form">
-            <input type="text" placeholder="Név" name="username" required>
-            <input type="password" placeholder="Jelszó" name="password" required>
+            <span id="error_label"></span>
+            <input id="log-name" type="text" placeholder="Név" name="username" required>
+            <input id="log-pass" type="password" placeholder="Jelszó" name="password" required>
             <button id="auth-btn" type="submit" class="clickable bg">Belépés</button>
             <span id="admin-auth" class="clickable" onclick="redirectToRegistration()">Regisztráció</span>
         </form>

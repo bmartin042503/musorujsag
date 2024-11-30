@@ -1,9 +1,11 @@
 /* Konstansok, beimportált elemek */
 const express = require('express');
+const session = require('express-session');
 const http = require('http');
 const path = require('path');
 const db_server = require('./config/db');
 const programRoutes = require('./routes/ProgramRoutes');
+const authRoutes = require('./routes/AuthRoutes');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 7500;
@@ -18,20 +20,43 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use(session({
+    secret: process.env.SESSION_SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+}));
+
 /* Alap végpontok kezelése */
 app.get('/', (req, res) => {
     res.render('index');
 });
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    if(req.session.isLoggedIn) {
+        res.redirect('/dashboard');
+    } else {
+        res.render('login');
+    }
 });
 
 app.get('/register', (req, res) => {
-    res.render('register');
+    if(req.session.isLoggedIn) {
+        res.redirect('/dashboard');
+    } else {
+        res.render('register');
+    }
+});
+
+app.get('/dashboard', (req, res) => {
+    if(req.session.isLoggedIn) {
+        res.render('dashboard');
+    } else {
+        res.redirect('/login');
+    }
 });
 
 app.use(programRoutes);
+app.use('/api', authRoutes)
 
 /* Szerver */
 server.listen(PORT, () => {
