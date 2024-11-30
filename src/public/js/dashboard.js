@@ -33,7 +33,7 @@ function displayModal(interaction) {
             const descriptionInput = document.createElement('input');
             descriptionInput.type = 'text';
             descriptionInput.placeholder = 'Csatorna leírása';
-            descriptionInput.required = true;
+            descriptionInput.required = false;
             form.appendChild(descriptionInput);
 
             if (categories.length > 0) {
@@ -61,6 +61,11 @@ function displayModal(interaction) {
                 form.appendChild(noCategoriesMessage);
             }
 
+            const errorLabel = document.createElement('span');
+            errorLabel.id = 'error-label';
+            errorLabel.style.display = 'none';
+            form.appendChild(errorLabel);
+
             const interactions = document.createElement('div');
             interactions.className = 'interaction-container';
 
@@ -78,8 +83,23 @@ function displayModal(interaction) {
             cancelButton.textContent = 'Vissza';
             cancelButton.onclick = hideModal;
             interactions.appendChild(cancelButton);
+
+            form.appendChild(interactions);
             modalContent.appendChild(form);
-            modalContent.appendChild(interactions);
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const channelData = {
+                    name: nameInput.value,
+                    description: descriptionInput.value,
+                    category: form.querySelector('#categories')?.value || null
+                };
+                if(channelData.name.length === 0) {
+                    displayError("A csatorna neve nem lehet üres!");
+                    return;
+                }
+                createNewChannel(channelData.name, channelData.description, channelData.category);
+            });
             break;
         case ModalInteraction.NEW_SHOW:
 
@@ -103,4 +123,30 @@ window.onclick = function(event) {
     if (event.target === dashboardModal) {
         hideModal();
     }
+}
+
+function createNewChannel(name, description, category) {
+    fetch('/api/new-channel', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+            { name: name, description: description, category: category }
+        )
+    })
+        .then(response => {
+            if(response.status === 201) {
+                hideModal();
+                location.reload();
+            } else if(response.status === 400) {
+                displayError("Ez a csatornanév már foglalt!");
+            }
+        })
+}
+
+function displayError(msg) {
+    const errorLabel = document.getElementById('error-label');
+    errorLabel.innerText = msg;
+    errorLabel.style.display = "block";
 }

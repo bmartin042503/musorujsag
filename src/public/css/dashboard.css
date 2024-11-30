@@ -40,3 +40,7 @@
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+#no-categories, #error-label {
+    color: var(--md-sys-color-error);
+}

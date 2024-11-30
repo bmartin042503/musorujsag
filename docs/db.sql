@@ -23,7 +23,8 @@ CREATE TABLE Kozvetit (
     csatorna_id INT,
     musor_id INT,
     mikor DATETIME,
-    PRIMARY KEY (csatorna_id, musor_id, mikor),
+    meddig DATETIME,
+    PRIMARY KEY (csatorna_id, musor_id, mikor, meddig),
     FOREIGN KEY (csatorna_id) REFERENCES Csatorna(id) ON DELETE CASCADE,
     FOREIGN KEY (musor_id) REFERENCES Musor(id) ON DELETE CASCADE
 );
