@@ -11,6 +11,7 @@
 <body>
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
+    <script src="js/logout.js"></script>
     <script src="js/dashboard.js"></script>
     <div class="top-section">
         <span id="dashboard-title" style="color: var(--md-sys-color-on-surface)">Admin Kezelőpanel</span>
@@ -21,8 +22,21 @@
         </button>
     </div>
     <div class="panel-container">
-        <div class="channel-panel">
-            <span id="panel-title">Összes csatorna</span>
+        <div class="channel-panel panel-section">
+            <span id="panel-title">Összes csatorna (<%= channels.length %>)</span>
+            <span class="clickable bg">Új csatorna létrehozása</span>
+        </div>
+        <div class="show-panel panel-section">
+            <span id="panel-title">Összes műsor (<%= shows.length %>)</span>
+            <span class="clickable bg">Új műsor létrehozása</span>
+        </div>
+        <div class="actor-panel panel-section">
+            <span id="panel-title">Összes szereplő (<%= actors.length %>)</span>
+            <span class="clickable bg">Új szereplő létrehozása</span>
+        </div>
+        <div class="category-panel panel-section">
+            <span id="panel-title">Összes kategória (<%= categories.length %>)</span>
+            <span class="clickable bg">Új kategória létrehozása</span>
         </div>
     </div>
 </body>

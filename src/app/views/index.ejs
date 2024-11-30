@@ -11,13 +11,17 @@
 <body>
     <script src="js/theme.js"></script>
     <script src="js/redirections.js"></script>
+    <script src="js/logout.js"></script>
     <div class="main-section">
         <div class="title-container">
             <span id="project-title" style="color: var(--md-sys-color-on-surface)">Adatbázisok gyakorlat - Műsorújság projekt</span>
             <span id="project-subtitle" style="color: var(--md-sys-color-on-surface)">Készítette: Bartos Martin (AWPA20)</span>
         </div>
         <div class="clickable-container">
-            <span id="admin-login" class="clickable bg" onclick="redirectToLogin()">Admin belépés</span>
+            <span id="admin-login" class="clickable bg" onclick="redirectToLogin()"><%= loggedIn ? "Kezelőpanel" : "Admin belépés" %></span>
+            <% if(loggedIn) { %>
+                <span id="admin-login" class="clickable bg" onclick="logout()">Kijelentkezés</span>
+            <% } %>
             <span id="view-program-guide" class="clickable bg" onclick="redirectToProgramGuide()">Műsorújság megtekintése</span>
         </div>
         <button id="theme-toggle" onclick="toggleTheme()">

@@ -18,3 +18,25 @@
     text-align: start;
     margin-bottom: 0.5rem;
 }
+
+.panel-section {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#panel-title {
+    color: var(--md-sys-color-on-surface);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.panel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
