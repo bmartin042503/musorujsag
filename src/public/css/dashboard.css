@@ -54,45 +54,38 @@
     color: var(--md-sys-color-error);
 }
 
-.channel-item {
+.channel-item, .show-item {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
     padding: 1rem 1.5rem;
     border-radius: 1.5rem;
     margin-bottom: 1rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
-.channel-details {
+.channel-details, .show-details {
     display: flex;
     flex-direction: column;
     align-items: start;
 }
 
-.channel-interactions {
+.panel-item-interactions {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-evenly;
+    align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
-.channel-interactions button {
-    background: none;
-    border: none;
-}
-
-.channel-interactions button:hover {
-    cursor: pointer;
-}
-
-#channel-name {
+#channel-name, #show-title {
     font-size: 1.3rem;
     margin-bottom: 0.75rem;
 }
 
-#channel-description {
+#channel-description, #show-description {
     margin-bottom: 0.75rem;
 }
 
@@ -100,12 +93,43 @@
     margin-top: 0.75rem;
 }
 
-#edit-icon, #delete-icon {
-    height: 2rem;
-    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-    transition: 0.4s ease;
+#categories {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
 }
 
-body.light #edit-icon, body.light #delete-icon {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+button {
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    transition: 0.3s ease;
+    font-size: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.modifier-btn {
+    background-color: var(--md-sys-color-secondary);
+    color: var(--md-sys-color-on-secondary);
+    flex: 1;
+}
+
+.modifier-btn:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.delete-btn {
+    background-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-on-error);
+    flex: 1;
+}
+
+.delete-btn:hover {
+    background-color: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+    flex: 1;
 }

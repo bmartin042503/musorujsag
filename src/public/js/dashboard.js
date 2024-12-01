@@ -8,14 +8,13 @@ const ModalInteraction = {
     // TODO: továbbiak..
 }
 
-function displayModal(interaction) {
+async function displayModal(interaction) {
     const dashboardModal = document.getElementById('dashboard-modal');
     dashboardModal.style.display = "block";
     const modalContent = document.getElementById('modal-content');
     switch(interaction) {
         case ModalInteraction.NEW_CHANNEL:
-            const categories = []; // TODO: fetch
-
+            let categories = await getCategories();
             const title = document.createElement('span');
             title.id = 'modal-title';
             title.textContent = 'Új csatorna létrehozása';
@@ -46,10 +45,11 @@ function displayModal(interaction) {
                 select.name = 'categories';
                 select.id = 'categories';
 
+                console.log(categories);
                 categories.forEach(category => {
                     const option = document.createElement('option');
-                    option.value = `category-${category.id}`;
-                    option.textContent = category.name;
+                    option.value = `category-${category._id}`;
+                    option.textContent = category._name;
                     select.appendChild(option);
                 });
 
@@ -125,6 +125,12 @@ window.onclick = function(event) {
     }
 }
 
+function displayError(msg) {
+    const errorLabel = document.getElementById('error-label');
+    errorLabel.innerText = msg;
+    errorLabel.style.display = "block";
+}
+
 function createNewChannel(name, description, category) {
     fetch('/api/new-channel', {
         method: 'POST',
@@ -143,10 +149,31 @@ function createNewChannel(name, description, category) {
                 displayError("Ez a csatornanév már foglalt!");
             }
         })
+        .catch(error => {
+            console.error(`Hiba történt a csatorna létrehozása során: ${error}`);
+        });
 }
 
-function displayError(msg) {
-    const errorLabel = document.getElementById('error-label');
-    errorLabel.innerText = msg;
-    errorLabel.style.display = "block";
+function getCategories() {
+    return fetch('/api/categories', {
+        method: 'GET'
+    })
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                return [];
+            }
+        })
+        .then(data => {
+            if(data.categories && data.categories.length > 0) {
+                return data.categories;
+            } else {
+                return [];
+            }
+        })
+        .catch(error => {
+            console.error(`Hiba történt a kategóriák lekérése során: ${error}`);
+            return [];
+        });
 }

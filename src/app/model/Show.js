@@ -6,7 +6,8 @@ class Show {
         description,
         air_begin_date,
         air_end_date,
-        actors // Actor példányok
+        actors, // Actor példányok
+        airs_on
     ) {
         this._id = id;
         this._title = title;
@@ -62,11 +63,11 @@ class Show {
     }
 
     get air_begin_date() {
-        return this._air_begin_date;
+        return this._air_begin_date.toISOString();
     }
 
     get air_end_date() {
-        return this._air_end_date;
+        return this._air_end_date.toISOString();
     }
 
     get actors() {

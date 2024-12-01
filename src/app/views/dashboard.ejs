@@ -43,13 +43,9 @@
                             <% } %>
                             <span id="channel-show-count">Hozzárendelt műsorok: <%= channel.shows.length > 0 ? channel.shows.length : 0 %></span>
                         </div>
-                        <div class="channel-interactions">
-                            <button id="edit-channel" onclick="">
-                                <img id="edit-icon" src="images/edit.svg" alt="Csatorna szerkesztése">
-                            </button>
-                            <button id="delete-channel" onclick="">
-                                <img id="delete-icon" src="images/delete.svg" alt="Csatorna törlése">
-                            </button>
+                        <div class="panel-item-interactions">
+                            <button id="edit-channel" class="modifier-btn" onclick="">Szerkesztés</button>
+                            <button id="delete-channel" class="delete-btn" onclick="">Törlés</button>
                         </div>
                     </div>
                 <% }) %>
@@ -58,6 +54,25 @@
         <div class="show-panel panel-section">
             <span id="panel-title">Összes műsor (<%= shows.length %>)</span>
             <span class="clickable bg" onclick="displayModal(ModalInteraction.NEW_SHOW)">Új műsor létrehozása</span>
+            <div class="panel-content">
+                <% shows.forEach(show => { %>
+                    <div class="show-item <%= show.id %>">
+                        <div class="show-details">
+                            <span id="show-title"><%= show.title %> - <%= show.episode %></span>
+                            <span id="show-description"><%= show.description %></span>
+                            <% if(show.air_begin_date !== undefined && show.air_end_date !== undefined) { %>
+                                <span id="show_airs-on">Közvetítés a(z) x csatornán:</span>
+                            <% } else { %>
+                                <button id="edit-channel" class="modifier-btn" onclick="">Hozzárendelés csatornához</button>
+                            <% }%>
+                        </div>
+                        <div class="panel-item-interactions">
+                            <button id="edit-channel" class="modifier-btn" onclick="">Szerkesztés</button>
+                            <button id="delete-channel" class="delete-btn" onclick="">Törlés</button>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
         </div>
         <div class="actor-panel panel-section">
             <span id="panel-title">Összes szereplő (<%= actors.length %>)</span>

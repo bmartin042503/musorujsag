@@ -27,7 +27,7 @@
                     <button id="back-btn" onclick="">
                         <img id="arrow-icon" src="images/arrow_back.svg" alt="Előző csatornák listázása">
                     </button>
-                    <span id="available-channels">Elérhető csatornák összesen: <%= availableChannelsCount %></span>
+                    <span id="available-channels">Elérhető csatornák összesen: <%= channels.length %></span>
                     <button id="forward-btn" onclick="">
                         <img id="arrow-icon" src="images/arrow_forward.svg" alt="Következő csatornák listázása">
                     </button>
@@ -36,17 +36,17 @@
                     <% channels.forEach(channel => { %>
                         <div class="channel-guide" id="channel-guide-<%= channel.id %>">
                             <div class="channel-details">
-                                <span id="channel-name"><%= channel.name %> - <%= channel.category %></span>
+                                <span id="channel-name"><%= channel.name %> - <%= channel.categories %></span>
                                 <span id="channel-description"><%= channel.description %></span>
                             </div>
                             <div class="shows-container">
                                 <% channel.shows.forEach(show => { %>
-                                    <div class="show-details <%= show.aired_at === 'Most' ? 'airs' : '' %>">
-                                        <span id="show-air-time"><%= show.aired_at === 'Most' ? '10:00-12:00' : show.aired_at %></span>
+                                    <div class="show-details <%= show.id %> ">
+                                        <span id="show-air-time"><%= `${show.air_begin_date} - ${show.air_end_date}` %></span>
                                         <div class="show-description">
-                                            <span id="show-name"><%= show.name %></span>
+                                            <span id="show-name"><%= show.title %></span>
                                             <span id="show-episode">(<%= show.episode %>)</span>
-                                            <span id="show-actors">Szereplők: <%= show.actor %></span>
+                                            <span id="show-actors">Szereplők: <%= show.actors %></span>
                                         </div>
                                     </div>
                                 <% }) %>
